@@ -33,7 +33,10 @@ export async function POST(request: NextRequest) {
 
     await sendMail({ email, emailType: "VERIFY", userId: newUser._id });
 
-    return NextResponse.json({ message: "Data added successfully" });
+    return NextResponse.json({
+      message: "Data added successfully",
+      user: newUser,
+    });
   } catch (error) {
     console.log(error);
     return NextResponse.json(
